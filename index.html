@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Score Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loginPage" class="container">
+        <h1>Login</h1>
+        <div class="input-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter Username">
+        </div>
+        <button id="loginButton">Login</button>
+        <p id="loginError" style="color: red; display: none;">Please enter a username.</p>
+    </div>
+
+    <div id="dashboardPage" class="container" style="display: none;">
+        <h1>Cricket Score Tracker - User Dashboard</h1>
+        <h2 id="welcomeUser"></h2>
+        <button id="logoutButton">Logout</button>
+        <!-- Rest of your cricket score tracker HTML here -->
+        <div id="homepage">
+            <h1>Cricket Score Tracker</h1>
+            <div class="input-group">
+                <label for="team1">Team 1:</label>
+                <input type="text" id="team1" placeholder="Enter Team 1 Name">
+            </div>
+            <div class="input-group">
+                <label for="team2">Team 2:</label>
+                <input type="text" id="team2" placeholder="Enter Team 2 Name">
+            </div>
+            <button id="decideFirst">Who Bats First?</button>
+            <div class="input-group">
+                <label for="overs">Overs per side:</label>
+                <input type="number" id="overs" min="1" placeholder="Enter number of overs">
+            </div>
+            <button id="startMatch">Start Match</button>
+            <h2>Match History (Last 15 Matches)</h2>
+            <table id="matchHistoryTable">
+                <thead>
+                    <tr>
+                        <th>Match</th>
+                        <th>First Innings</th>
+                        <th>Second Innings</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody id="matchHistory"></tbody>
+            </table>
+        </div>
+
+        <div id="scoreboard" style="display: none;">
+            <h1 id="battingTeam">Team Name</h1>
+            <h2>Overs: <span id="oversLeft">0</span>.<span id="ballsLeft">0</span></h2>
+            <h2>Score: <span id="score">0</span>/<span id="wickets">0</span></h2>
+            <h2>Extras: <span id="extras">0</span></h2>
+
+            <div class="button-group">
+                <button onclick="addScore(1)">1 Run</button>
+                <button onclick="addScore(2)">2 Runs</button>
+                <button onclick="addScore(3)">3 Runs</button>
+                <button onclick="addScore(4)">4 Runs</button>
+                <button onclick="addScore(5)">5 Runs</button>
+                <button onclick="addScore(6)">6 Runs</button>
+                <button onclick="addWide()">Wide</button>
+                <button onclick="addNoBall()">No Ball</button>
+                <button onclick="addWideRun()">Wide + Runs</button>
+                <button onclick="addNoBallRun()">No Ball + Runs</button>
+                <button onclick="addWicket()">Wicket</button>
+                <button onclick="addDotBall()">Dot Ball</button>
+            </div>
+            <button id="undoLast">Undo Last Action</button>
+            <button id="resetMatch">Reset Match</button>
+            <button id="viewHistory">View History</button>
+        </div>
+
+        <div id="history" style="display: none;">
+            <h2>Match History</h2>
+            <p id="firstInningsScore"></p>
+            <p id="secondInningsScore"></p>
+            <button onclick="goBack()">Back to Scoreboard</button>
+        </div>
+
+        <div id="modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Ball-by-Ball History</h2>
+                <div id="ballByBallHistory"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
